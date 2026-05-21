@@ -10,12 +10,16 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       - name: Unzip project
-        run: unzip MetalDetector.zip
+        run: |
+          unzip MetalDetector.zip
+          ls -la
+          ls -la MetalDetector/
       - name: Build APK
         run: |
           cd MetalDetector
+          ls -la
           chmod +x gradlew
-          ./gradlew assembleDebug
+          ./gradlew assembleDebug --stacktrace
       - uses: actions/upload-artifact@v4
         with:
           name: MetalDetector-APK
