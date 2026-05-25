@@ -11,9 +11,12 @@ jobs:
           distribution: 'temurin'
       - name: Unzip and Build
         run: |
-          unzip MetalDetector.zip
-          cd MetalDetector
-          chmod +x gradlew
+          ls -la
+          unzip "MetalDetector-APK (1).zip" || unzip MetalDetector.zip || unzip MetalDetectorUSB.zip
+          find . -name "gradlew" -type f
+          GRADLEW=$(find . -name "gradlew" -type f | head -1)
+          chmod +x "$GRADLEW"
+          cd $(dirname "$GRADLEW")
           ./gradlew assembleDebug
       - uses: actions/upload-artifact@v4
         with:
