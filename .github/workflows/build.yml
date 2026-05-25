@@ -11,8 +11,7 @@ jobs:
           distribution: 'temurin'
       - name: Unzip and Build
         run: |
-          ls -la
-          unzip "MetalDetector-APK (1).zip" || unzip MetalDetector.zip || unzip MetalDetectorUSB.zip
+          unzip "MetalDetector-APK (8).zip"
           find . -name "gradlew" -type f
           GRADLEW=$(find . -name "gradlew" -type f | head -1)
           chmod +x "$GRADLEW"
